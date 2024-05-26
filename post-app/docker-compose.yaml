@@ -3,12 +3,12 @@ services:
     mysqldb:
       image: 'mysql'
       #ports:
-      #  - '3306:3306'
+        #- '3307:3306'
       #volumes:
       #  - data:/data/db
       environment: 
         MYSQL_ROOT_PASSWORD: root
-        #MYSQL_DATABASE: post_db
+        MYSQL_DATABASE: post_db
       container_name: post-app-db
       healthcheck:
         test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-ppass"]
@@ -28,8 +28,8 @@ services:
       depends_on:
         mysqldb:
           condition: service_healthy
-      links:
-        - mysqldb
+      #links:
+        #- mysqldb
       #image: 'goals-node'
       #build:
       #  context: ./backend
